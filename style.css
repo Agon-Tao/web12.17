@@ -12,13 +12,14 @@ body
 }
 body h1
 {
-    color:#282f59;
+    color:whitesmoke;
 }
 body p{
     color:#7C7C7C;
 
 }
 body a{
+     /* 去除a默认下划线 */
     text-decoration: none;
     color: whitesmoke;
 }
@@ -31,6 +32,11 @@ body a{
     --gradient-3 :  linear-gradient(to bottom right, rgb(255, 207, 145),rgb(255, 111, 92));
 
     --gradient-4 : linear-gradient(to bottom right, #2af598, #009efd);
+    --gradient-5 : linear-gradient(-90deg, #29bdd9 0%, #276ace 100%);
+    --gradient-6 : linear-gradient(to right, #a1c4fd 0%, #c2e9fb 100%);
+    --gradient-7 : linear-gradient(to right, #fddb92 0%, #d1fdff 100%);
+    --gradient-8 : linear-gradient(to right, #f6d365 0%, #fda085 100%);
+    
 }
 
 /*头部*/
@@ -56,7 +62,9 @@ header
 }
 .navbar ul li
 {
+    /* 设置列表项目样式为不使用项目符号 */
    list-style: none;
+   /* 就是在同一行内的块级元素。 */
    display: inline-block;
    margin:0 25px;/*margin设置元素的外边距*/
 }
@@ -64,26 +72,70 @@ header
 {
    text-decoration:none;/*text-decoration 属性规定添加到文本的修饰*/
    /* color: rgb(104, 32, 80);
-} */ */
+} */ 
 .logo
 {
     width: 180px;
 }
+.parent {
+    position: relative;
+}
+
+
+/* theme toggle */
+.theme{
+    position: absolute;
+    top:35px;
+    left: 0em;
+}
+/* 外边框 */
+.label{
+    width: 50px;
+    height: 20px;
+    background: rgb(235, 237, 241);
+    display: flex;
+    align-items: center;
+    border-radius: 50px;
+    cursor: pointer;
+}
+/* 开关的球 */
+.label .ball{
+    width: 15px;
+    height: 15px;
+    /* 开关的球 */
+    background: #85226c;
+    border-radius: 50%;
+    margin: 5px;
+    /* transition ：过渡效果的 CSS 属性的名称  完成过渡效果需要多少秒或毫秒  速度效果的速度曲线  过渡效果何时开始 */
+    transition: transform 0.5s; 
+}
+
+ .checkbox{
+    opacity: 0;
+    /* 不透明级别，从 0.0 （完全透明）到 1.0（完全不透明）*/
+     position: absolute;
+} 
+
+.checkbox:checked ~ .label{
+    background: #282f59;
+}
+
+ .checkbox:checked ~ .label .ball{
+    background-color: whitesmoke;
+    /* 小球的移动 translsteX表示X方向移动*/
+    transform: translateX(25px);
+} 
+
 .ctn
 {
     padding:10px 20px ;
-    background:linear-gradient(to bottom right,
-    rgb(255,207,145),
-    rgb(255,111,92)
-    );
+    background: var(--gradient-3);
     border-radius: 50px;
 }
-.ctn :hover
+.ctn:hover
 {
-    background:linear-gradient(to buttom right,
-    rgb(255,111,92),
-    rgb(255,207,145),
-    ) ;
+    /* linear-gradient() 函数用于创建一个线性渐变的 "图像" 到右下角 */
+    background: linear-gradient(to bottom right, rgb(5, 55, 218),  rgb(90, 9, 182));
 }
 .row
 {
@@ -95,29 +147,37 @@ header
 {
     color:wheat;
 }
+/* .a.b  // .a类下的.b类子节点，即.b类的节点要是.a类子节点
+.a .b  // 选择到同时拥有.a和.b的节点
+.a, .b  // 选择了.a元素和.b元素(多元素选择器) */
+
 .header-content , .hero-img{
     flex-basis: 50%;
     padding: 5rem;
+    border-radius: 20px;
+   color: tomato;
 }
 
 .header-content h1{
-    font-size: 7vmin;
+    font-size: 7vimn;
     margin-bottom: 30px;
     margin-top: 7rem;
-    color: #4542ff;
+    color: #50589c;
 }
+
 .learnmore{
     padding: 10px 20px;
-    border: 1px solid tomato;
+    border: 1px solid blue;
     border-radius: 50px;
-    color: tomato;
+    /* 字体的颜色 */
+    color: rgb(196, 155, 85);
     margin-right: 30px;
 }
 
 .learnmore:hover{
     background: var(--gradient-3);
     border: none;
-    color: whitesmoke;
+    color: rgb(189, 146, 53);
 }
 
 .hero-img img{
@@ -135,17 +195,20 @@ header
 }
 
 .grid-wrapper, .services-content{
+    /* 占父容器的一半 */
     flex-basis: 50%;
 }
 
 .grid-wrapper{
     display: grid;
+    /* 利用minmax()函数自适应布局 */
     grid-template-columns: repeat(auto-fit , minmax(250px,auto));
     grid-gap: 2em;
     padding: 2em;
 }
 
 .grid-box{
+    /* position: absolute; */
     height: 200px;
     padding: 2rem;
     text-align: center;
@@ -153,8 +216,57 @@ header
     box-shadow: 2px 2px 5px rgba(0, 0, 0, 0.562);
     z-index: 996;
 }
+/* C语言界面 */
+.Cbiaoti{
+     height: 100px;
+     width: 300px;
+    padding: 4rem;
+    margin-left: 15rem;
+    margin-top: 20rem;
+   text-align: center;
+    border-radius: 5px;
+    box-shadow: 2px 2px 5px rgba(0, 0, 0, 0.562);
+    /* 　z-index属性指定了元素及其子元素的【z顺序】 */
+    /* z-index: 996; */
+}
+.Cbiaotiyouce{
+    /* position: absolute; */
+     height: 250px;
+     width: 250px;
+      padding: 4rem;
+    margin-left: 70rem;
+    margin-top: -10rem;
+    /* padding: 4rem; */
+    /* left: -2rem; */
+    /* margin-right:20px;
+    margin-top: 10px; */
+   /* text-align: center; */
+    border-radius: 20px;
+    box-shadow: 2px 2px 5px rgba(197, 46, 46, 0.562);
+    /* 　z-index属性指定了元素及其子元素的【z顺序】 */
+    /* z-index: 996; */
+}
+
+.Cbiaotiyouce img{
+     max-height: 100%;
+    min-width: 100%;
+    display: flex;
+    /* width: 40em; */
+    /* height: 20em; */
+    overflow: hidden;
+    border-radius: 20px;
+}
+
+.Cbiaoti h4{
+    color: rgb(96, 96, 187);
+     font-size: 40px;
+     margin-top: -25px;
+    
+   
+}
 
 .grid-box img{
+
     width: 80px;
     height: 80px;
     margin-bottom: 20px;
@@ -166,7 +278,7 @@ header
     font-weight: 500;
 }
 
-.mobileapp{
+.C{
     background: var(--gradient-1);
 }
 
@@ -175,11 +287,11 @@ header
     margin-top: 30px;
 }
 
-.marketing{
+.Java{
     background: var(--gradient-3);
 }
 
-.branding{
+.Python{
     background: var(--gradient-4);
     margin-top: 30px;
 }
@@ -210,11 +322,17 @@ header
     width: 650px;
     z-index: -1;
     animation: scaleup 6s ease-in-out infinite;
+    /* infinite无限循环 */
+    /* 　ease-in-out：渐显渐隐效果，它是组合了ease-in和ease-out。动画或过渡将开始缓慢，在中间加速，然后减速直至结束。 */
+    /* animation vs transition */
+/* 相同点：都是随着时间改变元素的属性值。
+不同点：transition需要触发一个事件(hover事件或click事件等)才会随时间改变其css属性； 而animation在不需要触发任何事件的情况下也可以显式的随着时间变化来改变元素css的属性值，从而达到一种动画的效果，css3的animation就需要明确的动画属性值 */
 }
 .services .grid-box:hover{
     transform: translateY(-20px);
+    transition: transform 0.5s;
 }
-/* numbers */
+/* 数据结构 */
 .numbers{
     margin-top: 100px;
 }
@@ -239,24 +357,26 @@ header
     border-radius: 10px;
 }
 
-.happyClients{
-    background: var(--gradient-1);
+.lianbiao{
+    background: var(--gradient-5);
 }
 
-.projectsCompleted{
-    background: var(--gradient-2);
+.stack{
+    background: var(--gradient-6);
 }
 
-.runningProjects{
-    background: var(--gradient-3);
+.queue{
+    background: var(--gradient-7);
 }
 
-.awasomeDesigns{
-    background: var(--gradient-4);
+.tu{
+    background: var(--gradient-8);
 }
 .numbers .grid-box:hover{
     transform: translateY(-20px);
+     transition: transform 0.5s;
 }
+/* 以上完成 */
 /* 烟大风景图*/
 .projects{
     margin-top: 80px;
@@ -309,7 +429,6 @@ header
 .details i {
     font-size: 30px;
 }
-
 /*animation*/
 @keyframes scaleup{
     0%{
@@ -322,38 +441,156 @@ header
         transform: scale(1.2);
     }
 }
+/*Serach*/
+.container1{
+    position:absolute;
+    margin-top: 20em;
+    margin-left:65em;
+    padding: 3rem;
+    display: flex;
+}
+ .search {
+    width: 700px;
+    height: 80px;
+    right:30%;
+    top:40%;
+    border-radius: 30px;
+    outline: none;
+    border: 1px solid rgb(53, 73, 189);
+    padding-left: 40px;
+    position: absolute;
+}
 
 /* call to action */
 .getstarted{
-    margin-top: 80px;
+    margin-top: -15em;
+    margin-left: -30em;
     padding: 10rem;
 }
 
 .ctn-container{
     display: flex;
-    width: 80%;
-    padding: 2rem;
+    width: 45em;
+    height: 25em;
+    /* left: -100em; */
+    /* padding: 2rem; 图片与div盒子的边距*/
     box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.116);
     margin: 10px auto;
     justify-content: space-around;
-    border-radius: 10px;
+    border-radius: 20px;
 }
 
-.ctn-btn{
-    padding: 20px 50px;
-    color: white;
-    background: var(--gradient-2);
-    border: none;
-    font-size: 20px;
-    border-radius: 2px;
-    box-shadow: 0px 0px 20px 5px rgba(0, 0, 255, 0.171);
-    cursor: pointer;
-    outline: none;
+.ctn-container img{
+     max-height: 100%;
+    min-width: 100%;
+    display: flex;
+    /* width: 40em; */
+    /* height: 20em; */
+    overflow: hidden;
+    border-radius: 20px;
+}
+.ctn-container:hover{
+   transform: scale(1.01);
+    /* animation: scaleup 6s ease-in-out infinite; */
+    
+}
+.ctn-text{
+    height: 15em;
+    width: 45em;
+    display:flex ;
+    border-radius: 20px;
+     /* padding:5em; */
+    box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.116);
+    margin: 10px auto;
+    justify-content: space-around;
+
+}
+.ctn-tou{
+    position:absolute;
+    height: 4em;
+    max-width:100%;
+
+    display:flex ;
+    /* border-radius: 20px; */
+     /* padding:5em; */
+    /* box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.116); */
+    margin: 10px auto;
+    justify-content: space-around;
+}
+.ctn-body{
+    position:absolute;
+    height: 6em;
+    max-width:45em;
+    padding-top:5em ;
+    display:flex ;
+    border-radius: 20px;
+     /* padding:5em; */
+    /* box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.116); */
+    margin: 10px auto;
+    justify-content: space-around;
+}
+/* C内容的body */
+.Cctn-text{
+    height: auto;
+    width: 45em;
+    display:flex ;
+    border-radius: 20px;
+     /* padding:5em; */
+    box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.116);
+    margin: 10px auto;
+    justify-content: space-around;
+}
+.Cctn-body{
+    /* position:absolute; */
+    position:relative;
+    /* max-height: flex; */
+    /* max-width:45em; */
+    height: auto;
+    padding-top:5em ;
+    /* display:flex ; */
+    border-radius: 20px;
+     /* padding:5em; */
+    /* box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.116); */
+    margin: 10px auto;
+    justify-content: space-around;
+    overflow: hidden;
 }
 
-.ctn-btn:hover{
-    background: var(--gradient-4);
+
+.Cctn-body pre{
+    margin-left: -15em;
+    font-size: 3vmin;
+    font-weight: 100;
+   color: rgb(0, 0, 0);
 }
+.ctn-tou h1{
+    padding-top: 10px;
+     color: black;
+    font-weight: 500;
+}
+ .ctn-body p{
+     color: black;
+     font-weight: 100;
+ }
+
+ .ctn-start{
+     position:absolute;
+     padding-top: 12em;
+     padding-right:30em;
+     padding-bottom:0px;
+ }
+  .ctn-pinglun{
+     position:absolute;
+     padding-top: 12em;
+     padding-left:30em;
+     padding-bottom:0px;
+     /* padding: 10em 20em; */
+    /* border: 1px solid rgb(122, 65, 92); */
+    /* border-radius: 50px; */
+    /* 字体的颜色 */
+    /* color: rgb(185, 48, 55); */
+    /* margin-right: 30px; */
+ }
 /* footer */
 .col-4{
     min-height: 200px;
@@ -369,8 +606,30 @@ header
     padding: 30px;
     font-weight: 400;
 }
-
-
+ .weixin{
+   position:relative;
+ }
+.weixin::after{
+  content: url(./images/images/ercode.jpg);
+  position: absolute;
+  right: -28px;
+  top: -135px;
+  z-index: 99;
+  width:120px;
+  height: 120px;
+  border: 5px solid #0095ba;
+  border-radius: 4px;
+  transform-origin: top right;
+  transform: scale(0);
+  opacity: 0;
+  -webkit-transition: all .4s ease-in-out;
+  -o-transition: all .4s ease-in-out;
+  transition: all .4s ease-in-out;
+}
+.weixin:hover::after{
+  transform:scale(1);
+  opacity: 1;
+}
 /* scroll to top */
 #scrolltp{
     color: white;
@@ -381,52 +640,13 @@ header
     right: 50px;
     bottom: 50px;
     cursor: pointer;
-    transition: opacity 0.5s;
-}
-
-/* theme toggle */
-.theme{
-    position: absolute;
-    top:40px;
-    left: 22%;
-}
-
-.label{
-    width: 50px;
-    height: 20px;
-    background: rgb(219, 218, 218);
-    display: flex;
-    align-items: center;
-    border-radius: 50px;
-    cursor: pointer;
-}
-
-.label .ball{
-    width: 15px;
-    height: 15px;
-    background: #282f59;
-    border-radius: 50%;
-    margin: 5px;
-    transition: transform 0.5s;
-}
-
-.checkbox{
-    opacity: 0;
-    position: absolute;
-}
-
-.checkbox:checked ~ .label{
-    background: #282f59;
-}
-
-.checkbox:checked ~ .label .ball{
-    background-color: whitesmoke;
-    transform: translateX(25px);
+    transition: opacity 1s;
 }
 
 /* Dark mode colors */
 body.dark{
-    background: #282f59;
+    background:#3e396b;
+    /* #282f59; */
 }
 
 body.dark p{
@@ -460,4 +680,51 @@ body.dark a{
 
 body.dark .team .team-h1{
     color: whitesmoke;
+}
+
+/* 评论 */
+.contact-form textarea, .comment-form textarea {
+    margin-left:32em;
+    border: 1px solid #aaa;
+    margin-top: 3em;
+    background: none;
+    width: 40em;
+    padding: 15px 15px;
+    font-size: 16px;
+    line-height: 20px !important;
+    min-height: 183px;
+}
+
+.btn-send {
+    margin-left:6em;
+    margin-top: 6em;
+    background: none;
+    border: 1px solid #aaa;
+    cursor: pointer;
+    padding: 25px 80px;
+    display: inline-block;
+    letter-spacing: 1px;
+    position: absolute;
+    transition: all 0.3s;
+}
+
+.btn-5 {
+    color: #666;
+    height: 70px;
+    min-width: 260px;
+    line-height: 15px;
+    font-size: 16px;
+    overflow: hidden;
+}
+
+.btn-5 span {
+    display: inline-block;
+    width: 100%;
+    height: 100%;
+    transition: all 0.3s;
+}
+
+
+.btn-5b:hover span {
+    transform: translateX(200%);
 }
